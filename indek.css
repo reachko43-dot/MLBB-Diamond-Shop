@@ -1,0 +1,808 @@
+1<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MLBB Diamond Shop</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #080b16;
+            color: white;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 15px 7%;
+            background: rgba(5, 8, 18, 0.95);
+            border-bottom: 1px solid #27304a;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #ffc400;
+        }
+
+        .logo span {
+            color: #fff;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ffc400;
+        }
+
+        .menu {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 100vh;
+            padding: 150px 7% 80px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(5, 8, 18, 0.95),
+                    rgba(5, 8, 18, 0.55)
+                ),
+                radial-gradient(circle at 80% 50%, #1e3565, #080b16 60%);
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .hero-content h1 {
+            font-size: 58px;
+            margin-bottom: 20px;
+        }
+
+        .hero-content h1 span {
+            color: #ffc400;
+        }
+
+        .hero-content p {
+            color: #b9c0d0;
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 8px;
+
+            background: linear-gradient(135deg, #ffc400, #ff8c00);
+            color: #111;
+            font-weight: bold;
+            text-decoration: none;
+
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(255, 196, 0, 0.3);
+        }
+
+        .hero-icon {
+            width: 300px;
+            height: 300px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+            background: radial-gradient(circle, #ffc400, #a65d00 45%, transparent 70%);
+
+            font-size: 130px;
+
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* ================= SECTION ================= */
+
+        section {
+            padding: 90px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            color: #ffc400;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #9da6bb;
+        }
+
+        /* ================= DIAMONDS ================= */
+
+        .diamond-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .diamond-card {
+            padding: 30px 20px;
+            text-align: center;
+
+            background: linear-gradient(145deg, #11182b, #0b1020);
+            border: 1px solid #26304b;
+            border-radius: 15px;
+
+            transition: 0.3s;
+        }
+
+        .diamond-card:hover {
+            transform: translateY(-10px);
+            border-color: #ffc400;
+            box-shadow: 0 15px 35px rgba(255, 196, 0, 0.15);
+        }
+
+        .diamond {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .diamond-card h3 {
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        .diamond-card p {
+            color: #9da6bb;
+            margin-bottom: 20px;
+        }
+
+        .price {
+            color: #ffc400 !important;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .buy-btn {
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            padding: 12px;
+
+            border-radius: 7px;
+            background: #ffc400;
+            color: #111;
+
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .buy-btn:hover {
+            background: #ff8c00;
+        }
+
+        /* ================= HEROES ================= */
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .hero-card {
+            overflow: hidden;
+            border-radius: 15px;
+            background: #11182b;
+            border: 1px solid #26304b;
+            transition: 0.3s;
+        }
+
+        .hero-card:hover {
+            transform: translateY(-8px);
+            border-color: #ffc400;
+        }
+
+        .hero-image {
+            height: 230px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 90px;
+            background: linear-gradient(135deg, #192b52, #10182c);
+        }
+
+        .hero-info {
+            padding: 20px;
+        }
+
+        .hero-info h3 {
+            margin-bottom: 8px;
+        }
+
+        .hero-info p {
+            color: #9da6bb;
+        }
+
+        /* ================= PAYMENT ================= */
+
+        .payment-box {
+            max-width: 600px;
+            margin: auto;
+
+            padding: 35px;
+
+            background: #11182b;
+            border: 1px solid #26304b;
+            border-radius: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #dce1ec;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 14px;
+
+            border: 1px solid #303b58;
+            border-radius: 8px;
+
+            background: #080d1b;
+            color: white;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #ffc400;
+        }
+
+        .payment-btn {
+            width: 100%;
+            padding: 14px;
+
+            border: none;
+            border-radius: 8px;
+
+            background: linear-gradient(135deg, #ffc400, #ff8c00);
+            color: #111;
+
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* ================= CONTACT ================= */
+
+        .contact {
+            text-align: center;
+            background: #0b101e;
+        }
+
+        .contact p {
+            color: #aeb6c7;
+            margin: 10px 0;
+        }
+
+        .social {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social a {
+            width: 45px;
+            height: 45px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+            background: #19233b;
+
+            color: white;
+            text-decoration: none;
+
+            transition: 0.3s;
+        }
+
+        .social a:hover {
+            background: #ffc400;
+            color: #111;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #777f91;
+            background: #050811;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 1000px) {
+            .diamond-grid,
+            .hero-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-content h1 {
+                font-size: 45px;
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            nav ul {
+                display: none;
+
+                position: absolute;
+                top: 65px;
+                left: 0;
+                width: 100%;
+
+                flex-direction: column;
+                gap: 0;
+
+                background: #080b16;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                padding: 15px 7%;
+                border-bottom: 1px solid #202941;
+            }
+
+            .menu {
+                display: block;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                gap: 50px;
+            }
+
+            .hero-content h1 {
+                font-size: 40px;
+            }
+
+            .hero-icon {
+                width: 220px;
+                height: 220px;
+                font-size: 90px;
+            }
+
+            .diamond-grid,
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 70px 5%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav>
+        <div class="logo">
+            💎 MLBB<span>SHOP</span>
+        </div>
+
+        <ul id="navMenu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#diamonds">Diamonds</a></li>
+            <li><a href="#heroes">Heroes</a></li>
+            <li><a href="#payment">Payment</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="menu" onclick="toggleMenu()">☰</div>
+    </nav>
+
+
+    <!-- ================= HOME ================= -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <h1>
+                Buy <span>MLBB Diamonds</span>
+                Easily
+            </h1>
+
+            <p>
+                បញ្ចូល Diamonds សម្រាប់ Mobile Legends
+                របស់អ្នកបានរហ័ស សុវត្ថិភាព និងងាយស្រួល។
+                ជ្រើសរើស Package ដែលអ្នកចង់បាន ហើយបន្តទៅ Payment។
+            </p>
+
+            <a href="#diamonds" class="btn">
+                💎 Buy Diamonds
+            </a>
+
+        </div>
+
+        <div class="hero-icon">
+            💎
+        </div>
+
+    </section>
+
+
+    <!-- ================= DIAMONDS ================= -->
+
+    <section id="diamonds">
+
+        <div class="section-title">
+            <h2>💎 Diamond Packages</h2>
+            <p>ជ្រើសរើស Diamond Package ដែលអ្នកចង់បាន</p>
+        </div>
+
+        <div class="diamond-grid">
+
+            <div class="diamond-card">
+                <div class="diamond">💎</div>
+                <h3>86 Diamonds</h3>
+                <p>Basic Package</p>
+                <p class="price">$1.99</p>
+                <button class="buy-btn" onclick="selectPackage('86 Diamonds', '$1.99')">
+                    Buy Now
+                </button>
+            </div>
+
+            <div class="diamond-card">
+                <div class="diamond">💎</div>
+                <h3>172 Diamonds</h3>
+                <p>Popular Package</p>
+                <p class="price">$3.99</p>
+                <button class="buy-btn" onclick="selectPackage('172 Diamonds', '$3.99')">
+                    Buy Now
+                </button>
+            </div>
+
+            <div class="diamond-card">
+                <div class="diamond">💎</div>
+                <h3>257 Diamonds</h3>
+                <p>Value Package</p>
+                <p class="price">$5.99</p>
+                <button class="buy-btn" onclick="selectPackage('257 Diamonds', '$5.99')">
+                    Buy Now
+                </button>
+            </div>
+
+            <div class="diamond-card">
+                <div class="diamond">💎</div>
+                <h3>706 Diamonds</h3>
+                <p>Premium Package</p>
+                <p class="price">$14.99</p>
+                <button class="buy-btn" onclick="selectPackage('706 Diamonds', '$14.99')">
+                    Buy Now
+                </button>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= HEROES ================= -->
+
+    <section id="heroes">
+
+        <div class="section-title">
+            <h2>⚔️ Popular Heroes</h2>
+            <p>Heroes ពេញនិយមក្នុង Mobile Legends</p>
+        </div>
+
+        <div class="hero-grid">
+
+            <div class="hero-card">
+                <div class="hero-image">⚔️</div>
+                <div class="hero-info">
+                    <h3>Alucard</h3>
+                    <p>Fighter / Assassin</p>
+                </div>
+            </div>
+
+            <div class="hero-card">
+                <div class="hero-image">🔥</div>
+                <div class="hero-info">
+                    <h3>Gusion</h3>
+                    <p>Assassin</p>
+                </div>
+            </div>
+
+            <div class="hero-card">
+                <div class="hero-image">🗡️</div>
+                <div class="hero-info">
+                    <h3>Fanny</h3>
+                    <p>Assassin</p>
+                </div>
+            </div>
+
+            <div class="hero-card">
+                <div class="hero-image">🏹</div>
+                <div class="hero-info">
+                    <h3>Miya</h3>
+                    <p>Marksman</p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= PAYMENT ================= -->
+
+    <section id="payment">
+
+        <div class="section-title">
+            <h2>💳 Payment</h2>
+            <p>បំពេញព័ត៌មានដើម្បីបន្តការទូទាត់</p>
+        </div>
+
+        <div class="payment-box">
+
+            <div class="form-group">
+                <label>Mobile Legends ID</label>
+                <input
+                    type="text"
+                    id="userId"
+                    placeholder="បញ្ចូល User ID"
+                >
+            </div>
+
+            <div class="form-group">
+                <label>Server ID</label>
+                <input
+                    type="text"
+                    id="serverId"
+                    placeholder="បញ្ចូល Server ID"
+                >
+            </div>
+
+            <div class="form-group">
+                <label>Diamond Package</label>
+
+                <select id="package">
+                    <option value="">-- Select Package --</option>
+                    <option value="86 Diamonds - $1.99">
+                        86 Diamonds - $1.99
+                    </option>
+
+                    <option value="172 Diamonds - $3.99">
+                        172 Diamonds - $3.99
+                    </option>
+
+                    <option value="257 Diamonds - $5.99">
+                        257 Diamonds - $5.99
+                    </option>
+
+                    <option value="706 Diamonds - $14.99">
+                        706 Diamonds - $14.99
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Payment Method</label>
+
+                <select id="paymentMethod">
+                    <option value="">-- Select Payment --</option>
+                    <option value="ABA">ABA</option>
+                    <option value="KHQR">KHQR</option>
+                    <option value="Wing">Wing</option>
+                </select>
+            </div>
+
+            <button class="payment-btn" onclick="submitPayment()">
+                💳 Continue Payment
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CONTACT ================= -->
+
+    <section class="contact" id="contact">
+
+        <div class="section-title">
+            <h2>📞 Contact Us</h2>
+            <p>មានបញ្ហា? ទាក់ទងមកយើងខ្ញុំ</p>
+        </div>
+
+        <p>📧 Email: example@gmail.com</p>
+        <p>📱 Telegram: @mlbbshop</p>
+
+        <div class="social">
+            <a href="#">F</a>
+            <a href="#">T</a>
+            <a href="#">I</a>
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+        <p>
+            © 2026 MLBB Diamond Shop. All Rights Reserved.
+        </p>
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        // Mobile menu
+        function toggleMenu() {
+
+            const menu = document.getElementById("navMenu");
+
+            menu.classList.toggle("active");
+
+        }
+
+
+        // Select package
+        function selectPackage(packageName, price) {
+
+            const packageSelect =
+                document.getElementById("package");
+
+            const options =
+                packageSelect.options;
+
+            for (let i = 0; i < options.length; i++) {
+
+                if (
+                    options[i].text.includes(packageName)
+                ) {
+
+                    packageSelect.selectedIndex = i;
+
+                    break;
+                }
+            }
+
+            document
+                .getElementById("payment")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+        }
+
+
+        // Payment
+        function submitPayment() {
+
+            const userId =
+                document.getElementById("userId").value;
+
+            const serverId =
+                document.getElementById("serverId").value;
+
+            const packageName =
+                document.getElementById("package").value;
+
+            const payment =
+                document.getElementById("paymentMethod").value;
+
+
+            if (
+                userId === "" ||
+                serverId === "" ||
+                packageName === "" ||
+                payment === ""
+            ) {
+
+                alert(
+                    "សូមបំពេញព័ត៌មានទាំងអស់ជាមុនសិន!"
+                );
+
+                return;
+            }
+
+
+            alert(
+                "ការបញ្ជាទិញរបស់អ្នកត្រូវបានទទួល!\n\n" +
+                "User ID: " + userId +
+                "\nServer ID: " + serverId +
+                "\nPackage: " + packageName +
+                "\nPayment: " + payment
+            );
+
+        }
+
+    </script>
+
+</body>
+</html>

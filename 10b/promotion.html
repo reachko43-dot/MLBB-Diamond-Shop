@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table HTML</title>
+    <style>
+        table{
+            width: 70%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid pink;
+            padding: 8px;
+            text-align: left;
+        }
+        th{
+            background-color: rgb(176, 136, 212);
+            font-weight: bold;
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h2>promotion plans</h2>
+        <table border="1px">
+            <tr>
+                <th>Feature</th>
+                <th>basic</th>
+                <th>standard</th>
+                <th>premium</th>
+                <th>Discount</th>
+            </tr>
+            <tr>
+                <td>price</td>
+                <td>9.99$</td>
+                <td>19.99$</td>
+                <td>29.99$</td>
+                <td rowspan="4" style="background-color: rgb(253, 142, 142);text-align: center;color: aliceblue;">50%</td>
+            </tr>
+            <tr>
+                <td>Storage</td>
+                <td>10G</td>
+                <td>50G</td>
+                <td>100G</td>
+            </tr>
+            <tr>
+                <td>Bandswidth</td>
+                <td>100G</td>
+                <td>500G</td>
+                <td>Unlimited</td>
+            </tr>
+            <tr>
+                <td>Supprt</td>
+                <td colspan="3">phone</td>
+            </tr>
+
+        </table>
+    </center>
+</body>
+</html>
